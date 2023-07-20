@@ -1,0 +1,30 @@
+{% extends "EduNova/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{topic.name}}</title>
+    <link type='text/css' href="{% static 'EduNova/css/list.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="topic">
+                <h1>Список тем</h1>
+                {% csrf_token %}
+                {% for l in list_all %}
+                    <a href="{% url 'topic' l.uuid_topic.uuid %}">
+                        {{l.uuid_topic.name}} {{l.uuid_topic.percent}}%
+                    </a>
+                    <p>{{l.text}}</p>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>
+

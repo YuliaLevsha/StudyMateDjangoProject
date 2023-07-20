@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type='text/css' href="{% static 'EduNova/css/register.css' %}" rel="stylesheet" />
+    <title>Регистрация</title>
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form method="post" action="">
+                    <h2>Регистрация</h2>
+                    {% csrf_token %}
+                    <div class="input-box">
+                        <ion-icon name="person-outline"></ion-icon>
+                        {{form.username}}
+                        <label for="">Имя пользователя</label>
+                    </div>
+                    <div class="input-box">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        {{form.email}}
+                        <label for="">Почта</label>
+                    </div>
+                    <div class="input-box">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        {{form.password1}}
+                        <label for="">Пароль</label>
+                    </div>
+                    <div class="input-box">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        {{form.password2}}
+                        <label for="">Подтвердить пароль</label>
+                    </div>
+                    <button type="submit">Зарегистрироваться</button>
+                    <div class="register">
+                        <p>Есть аккаунт?<a href="{% url 'login' %}"> Авторизоваться</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

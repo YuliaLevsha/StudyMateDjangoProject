@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@300;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ysabeau Infant', sans-serif;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 800px;
+    width: 100%;
+
+    background: url("https://librarymanagementcom.files.wordpress.com/2018/01/cropped-library-wallpaper-50371-52062-hd-wallpapers.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.form-box{
+    position: relative;
+    width: 400px;
+    height: 450px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+}
+
+h2{
+    font-size: 32px;
+    color: white;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid white;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+#id_username:focus ~ label, #id_email:focus ~ label, #id_password1:focus ~ label, #id_password2:focus ~ label,
+#id_username:valid ~ label, #id_email:valid ~ label, #id_password1:valid ~ label, #id_password2:valid ~ label{
+    top: -5px;
+}
+
+#id_username, #id_email, #id_password1, #id_password2{
+    width: 100%;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 0 35px 0 5px;
+    color: white;
+}
+
+.input-box ion-icon{
+    position: absolute;
+    right: 8px;
+    color: white;
+    font-size: 20px;
+}
+
+button{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.register{
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register p a{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.register p a:hover{
+    text-decoration: underline;
+}

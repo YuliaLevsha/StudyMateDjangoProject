@@ -1,0 +1,77 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  {% block content %}
+  <link type='text/css' href="{% static 'EduNova/css/page.css' %}" rel="stylesheet" />
+</head>
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="article">
+        {% csrf_token %}
+        <h1>{{topic.name}} {{topic.percent}}%</h1>
+        <form action="http://127.0.0.1:8000/list_topic/{{topic.uuid}}/article/">
+            <button type="submit" name="add" value="">Добавить новый абзац</button>
+        </form>
+        <h3>Задачи:</h3>
+        <form method="POST">
+          {% csrf_token %}
+          {% for g in goal %}
+          <br>
+            {% if g.status == True %}
+              <input type="checkbox" value="{{g.uuid}}" id="{{g.task}}" name="goal" checked="checked">
+            {% else %}
+              <input type="checkbox" value="{{g.uuid}}" id="{{g.task}}" name="goal">
+            {% endif %}
+            <label for="{{g.task}}">{{g.task}}</label>
+          {% endfor %}
+          <br>
+          <button type="submit">Сохранить изменения</button>
+        </form>
+        {% for a in list_article %}
+          <h1>{{a.header}}</h1>
+            <details>
+              <summary>Добавить пометку</summary>
+              <form method="post" action="">
+                {% csrf_token %}
+                {{form.text.label}}
+                {{form.text}}
+                {{form.text.errors}}
+
+                <select name="article_uuid" hidden="hidden">
+                  <option value="{{a.uuid}}">{{a.header}}</option>
+                </select>
+                <button type="submit">Добавить</button>
+              </form>
+            </details>
+            <p>
+              {{a.text}}
+            </p>
+            <p>Пометки: </p>
+            {% for n in note %}
+              {% if n.uuid_article.uuid == a.uuid %}
+                <ul class="notes">
+                  <li>{{n.text}}</li>
+                </ul>
+              {% endif %}
+            {% endfor %}
+            <hr>
+            <form action="http://127.0.0.1:8000/list_topic/{{topic.uuid}}/article/">
+              <button type="submit" name="add" value="{{a.uuid}}">Добавить новый абзац</button>
+            </form>
+            <hr>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+  <a href="{% url 'add_goal' topic.uuid%}">Добавить цель</a>
+  <a href="{% url 'list_topic' %}">Вернуться обратно</a>
+  {% endblock content %}
+</body>
+</html>
+
+

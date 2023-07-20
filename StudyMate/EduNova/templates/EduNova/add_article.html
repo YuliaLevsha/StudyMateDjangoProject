@@ -1,0 +1,12 @@
+<h1>Добавление нового абзаца</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+
+    {{form.text.label}}
+    {{form.text}}
+
+    {{form.header.label}}
+    {{form.header}}
+    <button type="submit">Добавить</button>
+</form>

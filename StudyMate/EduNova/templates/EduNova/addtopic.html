@@ -1,0 +1,17 @@
+<h1>Добавление новой темы</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{form.name.label}}
+    {{form.name}}
+    {{form.name.errors}}
+
+    {{form2.text.label}}
+    {{form2.text}}
+    {{form2.text.errors}}
+
+    {{form2.header.label}}
+    {{form2.header}}
+    {{form2.header.errors}}
+    <button type="submit">Добавить</button>
+</form>

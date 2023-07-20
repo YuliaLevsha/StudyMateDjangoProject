@@ -1,0 +1,16 @@
+<h1>Добавление заметки к тексту</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+
+    {{form.text.label}}
+    {{form.text}}
+    {{form.text.errors}}
+
+    <select name="article_uuid">
+        {% for c in context %}
+        <option value="{{c.uuid}}">{{c.header}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Добавить</button>
+</form>

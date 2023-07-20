@@ -1,0 +1,9 @@
+<h1>Добавление новой задачи</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{form.task.label}}
+    {{form.task}}
+
+    <button type="submit">Добавить</button>
+</form>
