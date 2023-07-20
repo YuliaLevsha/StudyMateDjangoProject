@@ -1,10 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link type='text/css' href="{% static 'EduNova/css/index.css' %}" rel="stylesheet"/>
     <title>Главная страница</title>
 </head>
 <body>
-      <h1>Это главная страница</h1>
+    <nav>
+        <div class="logo">
+            <a href="{% url 'home' %}"><p>EduNova</p></a>
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'list_topic' %}">Список тем</a>
+            </li>
+            {% if context != None %}
+            <li>
+                <a href="{% url 'addtopic' %}">Добавить новую тему</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">Выйти</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'register' %}">Регистрация</a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">Войти</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="main-block">
+        {% block content %}
+        <img src="https://top-fon.com/uploads/posts/2023-01/1674696338_top-fon-com-p-fon-dlya-prezentatsii-sovremennaya-bibliot-149.jpg"
+        alt="">
+        {% endblock content %}
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>
